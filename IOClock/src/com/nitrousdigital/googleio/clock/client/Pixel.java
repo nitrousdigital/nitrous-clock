@@ -24,7 +24,7 @@ public class Pixel extends AbstractPixel {
 	
 	private static final int MIN_VELOCITY = 1;
 	
-	public Pixel(double x, double y, Color color) {
+	public Pixel(double x, double y, PixelColor color) {
 		super(x,y,color);
 		this.dx = (Math.random() * 30 * 2) - 30;
 		this.dy = (Math.random() * 30 * 2) - 30;

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="IOClock" default="dist" basedir=".">
+    <property file="build.properties" />
+	
+	<!-- OBF[uscated], PRETTY, or DETAILED(defaults to OBF) -->
+    <!-- <property name="gwt.args" value="-style PRETTY" /> -->	
+	<property name="gwt.args" value="-style OBF" />
+		
+    <property name="gwt.sdk" location="D:/gwt/gwt-2.3.0" />
+	<property name="build.dir" location="build" />
+    <property name="widget.name" value="IOClock"/>
+	
+    <property name="gwt.module" value="com.nitrousdigital.googleio.clock.IOClock"/>
+	
+	<path id="project.class.path">
+		<pathelement location="war/WEB-INF/classes" />
+		<pathelement location="${gwt.sdk}/gwt-user.jar" />
+		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
+        <fileset dir="lib" includes="*.jar" />
+		<fileset dir="war/WEB-INF/lib" includes="**/*.jar" />
+	</path>
+	
+	<target name="javac" description="Compile java source">
+		<mkdir dir="war/WEB-INF/classes" />
+		<javac srcdir="src" includes="**" encoding="utf-8" destdir="war/WEB-INF/classes" source="1.5" target="1.5" nowarn="true" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copy todir="war/WEB-INF/classes">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="gwtc" depends="javac" description="GWT compile to JavaScript">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="src" />
+				<path refid="project.class.path" />
+			</classpath>
+			<!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+			<jvmarg value="-Xmx256M" />
+			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+			<arg line="${gwt.args}" />
+			<arg value="${gwt.module}" />
+		</java>
+	</target>
+
+	<target name="build" depends="gwtc" description="Build this project" />
+
+	<target name="war" depends="build" description="Create a war file">
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}/dist" />
+		<zip destfile="${build.dir}/dist/${widget.name}.war" basedir="war" />
+	</target>
+
+    <target name="stage-dist" depends="clean,build" description="Stage the contents of the war file">
+        <delete dir="${build.dir}/staging" />
+        <mkdir dir="${build.dir}/staging" />
+        <copy todir="${build.dir}/staging">
+            <fileset dir="war">
+                <exclude name="**/.svn" />
+                <exclude name="WEB-INF" />
+            </fileset>
+        </copy>
+        <delete dir="${build.dir}/staging/WEB-INF"/>
+    </target>
+	
+	<target name="dist" depends="stage-dist" description="Build and package the widget into a zip file">
+        <mkdir dir="${build.dir}/dist" />
+		<zip destfile="${build.dir}/dist/${widget.name}.zip" basedir="${build.dir}/staging" />
+	</target>
+
+	<target name="clean" description="Cleans this project">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+
+</project>

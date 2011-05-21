@@ -51,32 +51,32 @@ public class ClockPanel {
 		movingPixels = new Vector<Pixel>();
 		
 		dayHundreds = new DigitPanel();
-		dayHundreds.setColor(new Color("#265897"));
+		dayHundreds.setColor(PixelColor.DAY);
 		dayTens = new DigitPanel();
-		dayTens.setColor(new Color("#265897"));
+		dayTens.setColor(PixelColor.DAY);
 		dayUnits = new DigitPanel();
-		dayUnits.setColor(new Color("#265897"));
+		dayUnits.setColor(PixelColor.DAY);
 		
 		dayHourSep = new ColonPanel();
 
 		hourTens = new DigitPanel();
-		hourTens.setColor(new Color("#13acfa"));
+		hourTens.setColor(PixelColor.HOUR);
 		hourUnits = new DigitPanel();
-		hourUnits.setColor(new Color("#13acfa"));
+		hourUnits.setColor(PixelColor.HOUR);
 
 		hourMinSep = new ColonPanel();
 		
 		minuteTens = new DigitPanel();
-		minuteTens.setColor(new Color("#c0000b"));
+		minuteTens.setColor(PixelColor.MINUTE);
 		minuteUnits = new DigitPanel();
-		minuteUnits.setColor(new Color("#c0000b"));
+		minuteUnits.setColor(PixelColor.MINUTE);
 		
 		minSecSep = new ColonPanel();
 		
 		secondTens = new DigitPanel();
-		secondTens.setColor(new Color("#009a49"));
+		secondTens.setColor(PixelColor.SECOND);
 		secondUnits = new DigitPanel();
-		secondUnits.setColor(new Color("#009a49"));
+		secondUnits.setColor(PixelColor.SECOND);
 		
 		digitPanels = new DigitPanel[]{
 				dayHundreds, dayTens, dayUnits, hourTens, hourUnits, minuteTens, minuteUnits, secondTens, secondUnits

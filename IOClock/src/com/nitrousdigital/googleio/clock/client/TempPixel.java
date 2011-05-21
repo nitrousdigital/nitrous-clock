@@ -1,12 +1,11 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
 
 public class TempPixel extends AbstractPixel {
 	private double targetX;
 	private double targetY;
 	
-	public TempPixel(double startX, double startY, double endX, double endY, Color color) {
+	public TempPixel(double startX, double startY, double endX, double endY, PixelColor color) {
 		super(startX, startY, color);
 		this.targetX = endX;
 		this.targetY = endY;

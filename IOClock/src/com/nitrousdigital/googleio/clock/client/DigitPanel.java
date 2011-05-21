@@ -14,10 +14,10 @@ public class DigitPanel {
 	public static final int WIDTH = (int)(CIRCLE_RADIUS * 2 + SPACE) * 4;
 	public static final int HEIGHT = (int)(CIRCLE_RADIUS * 2 + SPACE) * 7;
 	
-	private Color color = DEFAULT_COLOR;
-	private static final Color DEFAULT_COLOR = Color.BLACK;
+	private PixelColor color = DEFAULT_COLOR;
+	private static final PixelColor DEFAULT_COLOR = PixelColor.DAY;
 	
-	private Color emptyColor = new Color("#d9d9d9");
+	private PixelColor emptyColor = PixelColor.OFF;
 	
 	private int value;
 	private int panelX;
@@ -31,7 +31,7 @@ public class DigitPanel {
 		this.panelY = panelY;
 	}
 	
-	public void setColor(Color color) {
+	public void setColor(PixelColor color) {
 		this.color = color;
 	}
 	
@@ -89,7 +89,7 @@ public class DigitPanel {
 				double x = panelX + (STEP_X * col);
 				canvas.beginPath();
 				canvas.arc(x, y, CIRCLE_RADIUS, 0, 360, false);
-				Color paintColor = emptyColor;
+				PixelColor paintColor = emptyColor;
 				if (shape[row][col] != 0) {
 					if (color != null) {
 						paintColor = color;
@@ -99,8 +99,10 @@ public class DigitPanel {
 				} else {
 					paintColor = emptyColor;
 				}
-				canvas.setStrokeStyle(paintColor);
-				canvas.setFillStyle(paintColor);
+				
+				Color paint = new Color(paintColor.getHtmlColor());
+				canvas.setStrokeStyle(paint);
+				canvas.setFillStyle(paint);
 				canvas.fill();
 			}
 		}
