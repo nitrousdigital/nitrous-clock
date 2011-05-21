@@ -1,5 +1,6 @@
 package com.nitrousdigital.googleio.clock.client;
 
+import com.google.gwt.widgetideas.graphics.client.Color;
 import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
 
 public class ColonPanel {
@@ -7,7 +8,9 @@ public class ColonPanel {
 	public static final int HEIGHT = DigitPanel.HEIGHT;
 	private int panelX;
 	private int panelY;
+	private Color color;
 	public ColonPanel() {
+		this.color = new Color(PixelColor.COLON.getHtmlColor());
 	}
 	public void setPosition(int panelX, int panelY) {
 		this.panelX = panelX;
@@ -50,8 +53,8 @@ public class ColonPanel {
 		double x = panelX + (DigitPanel.STEP_X * col);
 		double y = panelY + (DigitPanel.STEP_Y * row);
 		canvas.beginPath();
-		canvas.setFillStyle(com.google.gwt.widgetideas.graphics.client.Color.LIGHTGREY);
-		canvas.setStrokeStyle(com.google.gwt.widgetideas.graphics.client.Color.LIGHTGREY);
+		canvas.setFillStyle(color);
+		canvas.setStrokeStyle(color);
 		canvas.arc(x, y, DigitPanel.CIRCLE_RADIUS, 0, 360, false);
 		canvas.fill();
 	}

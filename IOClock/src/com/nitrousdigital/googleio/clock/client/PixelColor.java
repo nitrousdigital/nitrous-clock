@@ -1,51 +1,63 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.core.client.GWT;
 
 
 public enum PixelColor {
 	/**
 	 * Blue Days #265897
 	 */
-	DAY("#265897", GWT.getHostPageBaseURL()+"images/blue.png"),// days
+	DAY(getDayColor(), "#265897"),// days
 	
 	/**
 	 * Light Blue Hours #13acfa
 	 */
-	HOUR("#13acfa", GWT.getHostPageBaseURL()+"images/light_blue.png"), // hours
+	HOUR(getHourColor(), "#13acfa"), // hours
 	
 	/**
 	 * Red minutes #c0000b
 	 */
-	MINUTE("#c0000b", GWT.getHostPageBaseURL()+"images/red.png"), //minutes
+	MINUTE(getMinuteColor(), "#c0000b"), //minutes
 	
 	/**
 	 * Green Seconds #009a49 
 	 */
-	SECOND("#009a49", GWT.getHostPageBaseURL()+"images/green.png"),// seconds
+	SECOND(getSecondColor(), "#009a49"),// seconds
 	
 	/**
 	 * Gray Off #d9d9d9
 	 */
-	//OFF("#d9d9d9", GWT.getHostPageBaseURL()+"images/gray.png"),// off pixel
-	OFF("#000000", GWT.getHostPageBaseURL()+"images/gray.png"),// off pixel
+	OFF(getOffColor(), "#d9d9d9"),// off pixel
 	
 	/**
 	 * Light Gray Colons #eeeeee
 	 */
-	COLON("#eeeeee", GWT.getHostPageBaseURL()+"images/light_gray.png"); // colons
+	COLON(getColonColor(), "#eeeeee"); // colons
 	
 	
 	private String htmlColor;
-	private String imgUrl;
-	private PixelColor(String rgbHex, String imgUrl) {
-		this.htmlColor = rgbHex;
-		this.imgUrl = imgUrl;
+	private PixelColor(String rgbHex, String defaultColor) {
+		this.htmlColor = rgbHex == null ? defaultColor : rgbHex;
 	}
 	public String getHtmlColor() {
 		return htmlColor;
 	}
-	public String getImgUrl() {
-		return imgUrl;
-	}
+	
+	private native static String getDayColor() /*-{
+		return $wnd.dayColor;
+	}-*/;
+	private native static String getHourColor() /*-{
+		return $wnd.hourColor;
+	}-*/;
+	private native static String getMinuteColor() /*-{
+		return $wnd.minuteColor;
+	}-*/;
+	private native static String getSecondColor() /*-{
+		return $wnd.secondColor;
+	}-*/;
+	private native static String getOffColor() /*-{
+		return $wnd.offColor;
+	}-*/;
+	private native static String getColonColor() /*-{
+		return $wnd.colonColor;
+	}-*/;
 }

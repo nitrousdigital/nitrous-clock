@@ -2,16 +2,11 @@ package com.nitrousdigital.googleio.clock.client;
 
 import java.util.Vector;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.MouseListener;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
 
 public class ClockPanel {
 	private Canvas canvas;
@@ -112,6 +107,7 @@ public class ClockPanel {
 		if (canvas == null) {
 			// initial layout
 			canvas = new Canvas(clientWidth, clientHeight);
+			canvas.setStyleName("clock-canvas");
 			canvas.setListener(new MouseListener(){
 				public void onMouseDown(Widget sender, int x, int y) {
 					handleMouseDown(x, y);

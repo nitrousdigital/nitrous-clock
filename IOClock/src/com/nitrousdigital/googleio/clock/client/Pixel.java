@@ -1,7 +1,5 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
 
 public class Pixel extends AbstractPixel {
 	private static int[] SIN_TABLE, COS_TABLE;

@@ -5,58 +5,20 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.ImageElement;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.widgetideas.graphics.client.ImageLoader;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class IOClock implements EntryPoint {
-//	private static final String[] IMG_URLS = {
-//		PixelColor.DAY.getImgUrl(),
-//		PixelColor.OFF.getImgUrl(),
-//		PixelColor.SECOND.getImgUrl(),
-//		PixelColor.HOUR.getImgUrl(),
-//		PixelColor.COLON.getImgUrl(),
-//		PixelColor.MINUTE.getImgUrl()
-//	};
-//
-//	public static ImageElement BLUE;
-//	public static ImageElement GRAY;
-//	public static ImageElement GREEN;
-//	public static ImageElement LIGHT_BLUE;
-//	public static ImageElement LIGHT_GRAY;
-//	public static ImageElement RED;
-//	
-//	private Label message;
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-//		message = new Label("Loading Images, Please Wait...");
-//		RootPanel.get().add(message);
-//		
-//		ImageLoader.loadImages(IMG_URLS, new ImageLoader.CallBack() {
-//			@Override
-//			public void onImagesLoaded(ImageElement[] imageElements) {
-//				BLUE = imageElements[0];
-//				GRAY = imageElements[1];
-//				GREEN = imageElements[2];
-//				LIGHT_BLUE = imageElements[3];
-//				LIGHT_GRAY= imageElements[4];
-//				RED = imageElements[5];
-				onStart();
-//			}
-//		});
-	}
-	private void onStart() {
-//		RootPanel.get().remove(message);
-		
 		ClockPanel panel = new ClockPanel();
 		
 		// determine target date from URL arguments
@@ -67,7 +29,12 @@ public class IOClock implements EntryPoint {
 		Ticker ticker = new Ticker(count, panel);
 		ticker.start();
 		
-		RootPanel.get().add(panel.getWidget());
+		VerticalPanel background = new VerticalPanel();
+		background.setStyleName("canvas-background");
+		background.setWidth("100%");
+		background.setHeight("100%");
+		background.add(panel.getWidget());
+		RootPanel.get().add(background);
 	}
 
 	/**
