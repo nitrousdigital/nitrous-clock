@@ -7,6 +7,7 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.MouseListener;
 import com.google.gwt.user.client.ui.Widget;
+import com.nitrousdigital.googleio.clock.client.canvas.Canvas;
 
 public class ClockPanel {
 	private Canvas canvas;
@@ -98,7 +99,7 @@ public class ClockPanel {
 		if (clientHeight < MIN_HEIGHT) {
 			clientHeight = MIN_HEIGHT;
 		} else {
-			clientHeight-=20;
+			clientHeight-=5;
 		}
 		if (clientWidth == canvasWidth && clientHeight == canvasHeight) {
 			return;

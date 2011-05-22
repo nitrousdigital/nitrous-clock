@@ -1,7 +1,7 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Canvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Color;
 
 public class ColonPanel {
 	public static final int WIDTH = (int)(DigitPanel.STEP_X * 3);
@@ -40,16 +40,16 @@ public class ColonPanel {
 	}
 	
 	
-	public void paint(GWTCanvas canvas) {
+	public void paint(Canvas canvas) {
 		paint(canvas, panelX, panelY);
 	}
 	
-	private void paint(GWTCanvas canvas, double panelX, double panelY) {
+	private void paint(Canvas canvas, double panelX, double panelY) {
 		paint(2,1, canvas, panelX, panelY);
 		paint(4,1, canvas, panelX, panelY);
 	}
 	
-	private void paint(int row, int col, GWTCanvas canvas, double panelX, double panelY) {
+	private void paint(int row, int col, Canvas canvas, double panelX, double panelY) {
 		double x = panelX + (DigitPanel.STEP_X * col);
 		double y = panelY + (DigitPanel.STEP_Y * row);
 		canvas.beginPath();

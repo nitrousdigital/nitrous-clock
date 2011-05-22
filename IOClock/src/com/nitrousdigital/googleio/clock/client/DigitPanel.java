@@ -2,8 +2,8 @@ package com.nitrousdigital.googleio.clock.client;
 
 import java.util.ArrayList;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Canvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Color;
 
 
 public class DigitPanel {
@@ -72,17 +72,17 @@ public class DigitPanel {
 		return shape;
 	}
 	
-	public void paint(GWTCanvas canvas) {
+	public void paint(Canvas canvas) {
 		paint(canvas, panelX, panelY);
 	}
 	
-	private void paint(GWTCanvas canvas, double x, double y) {
+	private void paint(Canvas canvas, double x, double y) {
 		int[][] shape = getShape(value);
 		if (shape != null) {
 			paint(shape, canvas, x, y);
 		}
 	}
-	private void paint(int[][] shape, GWTCanvas canvas, double panelX, double panelY) {
+	private void paint(int[][] shape, Canvas canvas, double panelX, double panelY) {
 		for (int row = 0 ; row < shape.length; row++) {
 			double y = panelY + (STEP_Y * row);
 			for (int col = 0 ; col < shape[row].length; col++) {

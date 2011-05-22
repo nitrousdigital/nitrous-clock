@@ -1,7 +1,7 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Canvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Color;
 
 public class PacMan {
 	private int x;
@@ -19,7 +19,7 @@ public class PacMan {
 	public int getRadius() {
 		return radius;
 	}
-	public void paint(GWTCanvas canvas) {
+	public void paint(Canvas canvas) {
 		canvas.beginPath();		
 		canvas.setFillStyle(Color.YELLOW);
 		canvas.setStrokeStyle(Color.BLACK);

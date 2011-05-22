@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -19,6 +19,13 @@ public class IOClock implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		if (!com.google.gwt.canvas.client.Canvas.isSupported()) {
+			RootPanel.get().add(new Label("Sorry, your browser is not supported :("));
+		} else {
+			onStart();
+		}
+	}
+	private void onStart() {
 		ClockPanel panel = new ClockPanel();
 		
 		// determine target date from URL arguments

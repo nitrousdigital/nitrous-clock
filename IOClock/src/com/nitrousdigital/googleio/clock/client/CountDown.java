@@ -8,6 +8,7 @@ public class CountDown {
 	private static final long HOUR = 60 * MINUTE;
 	private static final long DAY = 24 * HOUR;
 	
+	private static final int MAX_DAYS = 999;
 	private int days;
 	private int hours;
 	private int minutes;
@@ -21,9 +22,9 @@ public class CountDown {
 			fromMillis(diffMillis);
 			
 			// enforce 365 day maximum as per requirements of contest
-			if (days > 365 || 
-					(days == 365 && (hours > 0 || minutes > 0 || seconds > 0))) {
-				days = 365;
+			if (days > MAX_DAYS || 
+					(days == MAX_DAYS && (hours > 0 || minutes > 0 || seconds > 0))) {
+				days = MAX_DAYS;
 				hours = 0;
 				minutes = 0;
 				seconds = 0;

@@ -1,7 +1,7 @@
 package com.nitrousdigital.googleio.clock.client;
 
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Canvas;
+import com.nitrousdigital.googleio.clock.client.canvas.Color;
 
 public abstract class AbstractPixel {
 	public double x;
@@ -18,7 +18,7 @@ public abstract class AbstractPixel {
 	
 	public abstract void move(int canvasWidth, int canvasHeight);
 	
-	public void paint(GWTCanvas canvas) {
+	public void paint(Canvas canvas) {
 		// paint based implementation
 		canvas.beginPath();		
 		canvas.setFillStyle(paint);
